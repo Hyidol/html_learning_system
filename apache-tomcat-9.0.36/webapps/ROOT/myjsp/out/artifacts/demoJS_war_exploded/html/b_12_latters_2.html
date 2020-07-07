@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机电贴</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../src/css/layui.css"  media="all">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<!------ css ------>
+
+<style>
+    *{margin: 0; padding: 0; font-family: "Arial", "微软雅黑";}
+    ul,li{list-style: none;}
+    .bbs{margin: 0 auto; width: 600px; position: relative;}
+    header{padding: 5px 0; border-bottom: 1px solid #cecece;}
+    header span{display:inline-block; width: 220px; height: 50px; color: #fff; background: #009966; font-size: 18px; font-weight: bold; text-align: center;line-height: 50px; border-radius: 8px; cursor: pointer;}
+    .post{position: absolute; background: #ffffff; border: 1px #cccccc solid; width: 500px; left: 65px; top:70px; padding: 10px; font-size: 14px; z-index: 999999; display: none;}
+    .post .title{width: 450px; height:30px; line-height: 30px; display: block; border: 1px #cecece solid; margin-bottom: 10px;}
+    .post select{width: 200px; height: 30px;}
+    .post .content{width: 450px; height: 200px; display: block; margin: 10px 0;border: 1px #cecece solid;}
+    .post .btn{width: 160px; height: 35px; color: #fff; background: #009966; border: none; font-size: 14px; font-weight: bold; text-align: center; line-height: 35px; border-radius: 8px; cursor: pointer;}
+
+    .bbs section ul li{padding: 10px 0; border-bottom: 1px #999999 dashed;
+        overflow: hidden;}
+    .bbs section ul li div{float: left; width: 60px; margin-right: 10px;}
+    .bbs section ul li div img{ border-radius:50%; width: 60px;}
+    .bbs section ul li h1{float: left; width: 520px; font-size: 16px; line-height: 35px;}
+    .bbs section ul li p{color: #666666; line-height: 25px; font-size: 12px; }
+    .bbs section ul li p span{padding-right:20px;}
+</style>
+
+<!------ body ------>
+
+<body>
+
+<!-- 任务描述  -->
+
+<fieldset class="layui-elem-field">
+    <legend>任务描述</legend>
+    <div class="layui-field-box">
+        任务12.制作论坛发帖页面（操作节点的方式）<br>
+        1．训练要点：<br>
+        	如何创建节点元素？<br>
+        	如何在指定节点之后插入节点元素？<br>
+        	如何在指定节点之前插入节点元素？<br>
+        	如何获取指定元素的值？<br>
+        	如何设置元素的显示和隐藏？<br><br>
+        2．需求说明<br><br>
+        制作显示如下图所示的京东回答页面，要求如下。<br><br>
+        （1）	单击“我要发帖”按钮，弹出发帖页面<br>
+        （2）	在标题框中输入标题，选择所属板块，输入帖子内容；<br>
+        （3）	单击“发布”按钮，新发布的帖子显示在列表的第一个，新帖子显示发帖者的头像、标题、所属板块和发布时间。
+        如果标题、所属版块和内容的数据不合法，应有相应的提示框。<br><br>
+
+    </div>
+</fieldset>
+
+<!-- 完成结果  -->
+
+<fieldset class="layui-elem-field">
+    <legend>完成结果1</legend>
+    <div class="layui-field-box">
+        <button><a href="b_12_latters_2.html">这是一个外链</a></button>
+    </div>
+</fieldset>
+
+
+    <div class="bbs">
+        <header><span onclick="iWantPost()">我要发帖</span></header>
+        <section>
+            <ul>
+                <!--
+                <li>
+                   <div>
+                       <img src="images/tou01.jpg" alt="">
+                   </div>
+                   <h1>如何学习前端Web开发课程</h1>
+                   <p><span>版块：新课来了</span><span>发表时间：2019-10-13 10:9</span></p>
+                </li>
+                -->
+            </ul>
+        </section>
+        <div class="post" id="post1">
+            <input id="title" placeholder="请输入标题（1-50个字符）">
+            所属版块：<select><option>请选择版块</option><option>娱乐</option><option>新闻</option><option>学习</option><option>闲置</option></select>
+            <textarea class="content"></textarea>
+            <input class="btn" value="发布" onclick="post()">
+        </div>
+    </div>
+
+
+</div>
+</fieldset>
+
+<!-- 实现代码  -->
+
+
+<fieldset class="layui-elem-field">
+    <legend>实现代码</legend>
+    <div class="layui-field-box">
+        <pre class="layui-code" >
+    function iWantPost() {
+        document.getElementById("post1").style.display = "block";
+    }
+
+    function headPortrait() {
+        //使用数组保存发帖者的头像
+        var head = new Array("../img/head01", "../img/head02", "../img/head03", "../img/head04");
+        //生成 0 到 数组长度之间的随机数
+        var n = parseInt(Math.random() * 4);
+        return head[n];
+    }
+
+    function post() {
+        document.getElementById("post1").style.display = "none";
+        /* 创建节点 */
+        var ul = document.getElementsByTagName("ul")[0];
+        var li = document.createElement("li");
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        var h1 = document.createElement("h1");
+        var p = document.createElement("p");
+        var span = document.createElement("span");
+
+        ul.appendChild(li);
+        li.className = ".bbs section ul li";
+
+        li.appendChild(div);
+        div.className = ".bbs section ul li div";
+
+        // 插入头像
+        div.appendChild(img);
+        img.className = ".bbs section ul li div img";
+        img.src = "../image/" + headPortrait();
+
+        // 插入标题
+        li.appendChild(h1);
+        h1.className = ".bbs section ul li h1";
+        h1.innerHTML = document.getElementById("title").value;
+
+        // 插入板块
+        li.appendChild(p);
+        p.className = ".bbs section ul li p";
+        p.innerHTML = "版块：" + document.getElementsByTagName("select")[0].value;
+
+        // 插入时间
+        p.appendChild(span);
+        span.className = ".bbs section ul li p span";
+
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var day = today.getDate();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+
+        span.innerHTML = "发表时间：" + year + "-" + month + "-" + day + "&nbsp;" + hour + ":" + minute + ":" + second;
+
+        document.getElementById("title").value = "";
+        document.getElementsByTagName("select")[0].value = "";
+        ul.insertBefore(li, ul.firstElementChild);
+    }
+
+        </pre>
+    </div>
+</fieldset>
+
+
+<script src="../src/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('code', function(){
+        layui.code({
+            title : '制作论坛发帖页面',
+            about : false
+        });
+
+    });
+</script>
+</body>
+</html>
+
+<script>
+
+    function iWantPost() {
+        document.getElementById("post1").style.display = "block";
+    }
+
+    function headPortrait() {
+        //使用数组保存发帖者的头像
+        var head = ["../img/head01", "../img/head02", "../img/head03", "../img/head04"];
+        //生成 0 到 数组长度之间的随机数
+        var n = parseInt(Math.random() * 4);
+        return head[n];
+    }
+
+    function post() {
+        document.getElementById("post1").style.display = "none";
+        /* 创建节点 */
+        var ul = document.getElementsByTagName("ul")[0];
+        var li = document.createElement("li");
+        var div = document.createElement("div");
+        var img = document.createElement("img");
+        var h1 = document.createElement("h1");
+        var p = document.createElement("p");
+        var span = document.createElement("span");
+
+        ul.appendChild(li);
+        li.className = ".bbs section ul li";
+
+        li.appendChild(div);
+        div.className = ".bbs section ul li div";
+
+        // 插入头像
+        div.appendChild(img);
+        img.className = ".bbs section ul li div img";
+        img.src = "../image/" + headPortrait();
+
+        // 插入标题
+        li.appendChild(h1);
+        h1.className = ".bbs section ul li h1";
+        h1.innerHTML = document.getElementById("title").value;
+
+        // 插入板块
+        li.appendChild(p);
+        p.className = ".bbs section ul li p";
+        p.innerHTML = "版块：" + document.getElementsByTagName("select")[0].value;
+
+        // 插入时间
+        p.appendChild(span);
+        span.className = ".bbs section ul li p span";
+
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var day = today.getDate();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+
+        span.innerHTML = "  发表时间：" + year + "-" + month + "-" + day + "&nbsp;" + hour + ":" + minute + ":" + second;
+
+        document.getElementById("title").value = "";
+        document.getElementsByTagName("select")[0].value = "";
+        ul.insertBefore(li, ul.firstElementChild);
+    }
+</script>

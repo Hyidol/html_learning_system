@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>HEELLOJS</title>
+    <link rel="stylesheet" href="src/css/layui.css">
+    <link rel="stylesheet" href="css/a_01_button.css">
+
+</head>
+<!-- body -->
+<body class="layui-layout-body" onload="a_00_stytle()">
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+
+    <canvas></canvas>
+    <!-- 顶栏 -->
+    <div class="layui-logo">兜兜转转是兜兜</div>
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="html/a_01_welcome.html" target="hyh">欢迎</a></li>
+        <li class="layui-nav-item"><a href="html/a_02_catalog.html" target="hyh">目录</a></li>
+        <li class="layui-nav-item"><a href="html/a_04_perinfo.html" target="hyh">用户</a></li>
+    </ul>
+
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+            <img src="img/0_user_logo.jpg" class="layui-nav-img">
+                Hyidol
+        </li>
+    </ul>
+
+
+    <!-- 侧栏导航 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item">
+                    <a>任务展示</a>
+                    <dl class="layui-nav-child" aria-hidden="true">
+                        <dd><a href="html/b_01_calculator.html" target="hyh">1、制作简易计算器</a></dd>
+                        <dd><a href="html/b_02_clock.html" target="hyh">2、制作24进制时钟特效</a></dd>
+                        <dd><a href="html/b_03_imgs_focus.html" target="hyh">3、制作简单焦点图效果</a></dd>
+                        <dd><a href="html/b_04_province.html" target="hyh">4、JSON实现省市级联</a></dd>
+                        <dd><a href="html/b_05_verify_regist.html" target="hyh">5、验证注册页面信息</a></dd>
+                        <dd><a href="html/b_06_popwindow.html" target="hyh">6、制作弹出窗口特效</a></dd>
+                        <dd><a href="html/b_07_imgs_change.html" target="hyh">7、制作图片轮显效果</a></dd>
+                        <dd><a href="html/b_08_book_intro.html" target="hyh">8、制作图书简介页面</a></dd>
+                        <dd><a href="html/b_09_chat.html" target="hyh">9、QQ聊天室</a></dd>
+                        <dd><a href="html/b_10_formcolor.html" target="hyh">10、双色表格</a></dd>
+                        <dd><a href="html/b_11_imgs_show.html" target="hyh">11、制作图片展示效果</a></dd>
+                        <dd><a href="html/b_12_latters.html" target="hyh">12、制作论坛发帖页面</a></dd>
+                        <dd><a href="index11.html" target="hyh">13、留言板</a></dd>
+                        <dd><a href="html/b_14_jQuery_game1.html" target="hyh">14、jQuery UI插件</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a>附录日志</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="./html/a_02_catalog.html" target="hyh">条目</a></dd>
+                        <dd><a href="./html/a_03_dailylog.html" target="hyh">日志</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a>联系作者</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="https://github.com/Hyidol/html_learning_system.git" target="_blank">ＧｉｔＨｕｂ</a></dd>
+                        <dd><a href="img/0_user_WeChat.jpg" target="hyh">ＷｅＣｈａｔ</a></dd>
+                        <dd><a href="img/0_user_QQ.jpg" target="hyh">ＱＱ</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 内容主体 -->
+    <div class="layui-body">
+        <div id="body_top">
+
+            <script>document.getElementById("body_top").value="0";</script>
+        </div>
+
+        <iframe src="html/a_01_welcome.html" width="100%" height="100%" name="hyh"></iframe>
+    </div>
+
+
+    <!-- 底部固定 -->
+    <div class="layui-footer">
+        <li id="time">hello</li>
+    </div>
+
+</div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/a_00_stytle.js"></script>
+<script src="js/a_01_mouse.js"></script>
+<script src="src/layui.js"></script>
+</body>
+</html>

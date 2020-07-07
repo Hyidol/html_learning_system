@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>签写留言</title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../src/css/layui.css"  media="all">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/ajax.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#button").click(function(){
+                $.get("b_13_words.jsp",
+                    $("#name").val(),
+                    function(data){
+                        var html = $("#responseText").html(html+"<div>用户名：" + data.name + "<br/>留言内容：" + data.content+"</div>");     // 将用户提交的用户名与留言内容显示
+                    },"json");
+            })
+        })
+    </script>
+</head>
+
+<!------ css ------>
+
+<style>
+    .dhead{
+        margin:0 auto;
+        width:754px;
+        height:57px;
+        background:url("../img/b_03.jpg") no-repeat;
+    }
+    #ddiv{
+        margin:0 auto;
+        width:754px;
+        background:url("../img/a_05.jpg") repeat-y;
+    }
+    .dcon{
+        width:754px;
+        padding-top:20px;
+        padding-left:200px;
+    }
+    .dfoot{
+        margin:0 auto;
+        width:754px;
+        height:35px;
+        background:url("../img/a_07.jpg") no-repeat;
+    }
+</style>
+
+<!------ body ------>
+<body>
+
+<!-- 任务描述  -->
+
+<fieldset class="layui-elem-field">
+    <legend>任务描述</legend>
+    <div class="layui-field-box">
+        1.	训练要点<br><br>
+        	掌握Ajax技术<br>
+        	掌握Ajax的开发模式<br>
+        	掌握使用$.ajax()方法请求数据<br>
+        	如何使用serialize()方法序列化表单如何设置元素的显示和隐藏？<br><br>
+        2.	需求说明<br><br>
+        制作显示如下图所示的留言板。用户在相应文本框中输入信息后点击“填写留言”按钮，相应文本框中的消息将显示在“已有留言”区域中。<br>
+    </div>
+</fieldset>
+
+<!-- 完成结果  -->
+
+<fieldset class="layui-elem-field">
+    <legend>完成结果</legend>
+    <div class="layui-field-box">
+
+
+        <table width="761" border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#FEFEFE" bgcolor="#FFFFFF">
+            <form action=""  method="post" name="form1" id="form1">
+                <tr>
+                    <td width="761" align="center" bgcolor="#F9F8EF"><table width="749" border="0" align="center" cellpadding="0"  cellspacing="0"  style="BORDER-COLLAPSE: collapse">
+                        <tr>
+                            <td width="749" height="57" background="../img/a_03.jpg">&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="36" colspan="3" align="left" background="../img/a_05.jpg" bgcolor="#F9F8EF" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓&nbsp;&nbsp;名：
+                                <input  name="name" id="name" value=" " maxlength="64" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="36" colspan="3" align="left" background="../img/a_05.jpg" bgcolor="#F9F8EF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标　题：
+                                <input maxlength="64" size="30" name="title"  type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="126" colspan="3" align="left" background="../img/a_05.jpg" bgcolor="#F9F8EF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内&nbsp;&nbsp;容：
+                                <textarea name="content" cols="60" rows="8" id="content" style="background:url(./../img/mrbccd.gif)"></textarea>
+
+                                <table width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="703" height="40" align="center"><input name="button" type="button" id="button" value="填写留言"/>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td height="35" background="../img/a_07.jpg">&nbsp;&nbsp;</td>
+                        </tr>
+                    </table>
+
+
+
+                    </td>
+                </tr>
+            </form>
+        </table>
+
+        <div class="dhead"></div>
+        <div id="ddiv"><div class="dcon">标题：吃饭<br>用户名： 张三<br>留言内容：小龙虾</div><div class="dcon">标题：考试<br>用户名： 李四<br>留言内容：加油</div></div>
+        <div class="dfoot"></div>
+
+    </div>
+</fieldset>
+
+<!-- 实现代码  -->
+
+
+<fieldset class="layui-elem-field">
+    <legend>实现代码</legend>
+    <div class="layui-field-box">
+        <pre class="layui-code" >
+
+            <%
+    request.setCharacterEncoding("utf-8");
+    String name=request.getParameter("name");
+    String content=request.getParameter("content");
+    response.setHeader("Content-Type", "application/json;charset=UTF-8");//注意加上这一句
+
+    String result = "{\"name\":\""+name+"\",\"content\":\""+content+"\"}";
+    response.getWriter().print(result);
+%>
+
+            $(function () {
+    $("#button").click(function () {
+        $.ajax(
+        {
+                type:"post",
+                url:"b_13_words.jsp",
+                data:
+                    $("#form1").serialize(),
+                    dataType:"json",
+                    success:function(data,textStatus){// 将用户提交的用户名与留言内容显示
+                        $("#ddiv").html( $("#ddiv").html() + "< div class='dcon'>标题：" + data.title + "< br/>用户名：" + data.name + "< br/>留言内容：" + data.content);
+                    }
+            }
+        );
+    })
+})
+
+        </pre>
+    </div>
+</fieldset>
+
+
+<script src="../src/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('code', function(){
+        layui.code({
+            title : '留言板',
+            about : false
+        });
+
+    });
+</script>
+
+</body>
+</html>

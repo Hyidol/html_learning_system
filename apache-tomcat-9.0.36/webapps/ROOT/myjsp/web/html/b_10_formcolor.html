@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双色表格</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../src/css/layui.css"  media="all">
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../js/b_10_formcolor.js"></script>
+</head>
+
+<!------ css ------>
+
+<style type="text/css">
+    h1{
+        color:#71004b;
+        font-weight:bold;
+        font-family:"黑体";
+        text-align:center;
+    }
+    .datalist{
+        border:1px solid  #8000a4;
+        background-color: #d4a5e5;
+        font-size:14px;
+        border-collapse:collapse;
+        width:800px;
+        margin:0px auto;
+    }
+    .datalist td{
+        border:1px solid #71004b;
+        text-align:center;
+        line-height:20px;
+        padding:4px 10px;
+    }
+    .tableHeader{
+        background: #8000a4;
+        color:#FFF;
+        font-weight:bold;
+    }
+    .evenStyle{
+        background-color: #e1c9e8;
+    }
+    .over{
+        background-color: #a8ff99;
+    }
+    .layui-field-box div{
+        text-align:center;
+    }
+    textarea{
+        height: 25px;
+    }
+</style>
+
+<!------ body ------>
+
+<body>
+
+    <!-- 任务描述  -->
+
+    <fieldset class="layui-elem-field">
+        <legend>任务描述</legend>
+        <div class="layui-field-box">
+            任务10. 双色表格（含页面内容查找功能）<br><br>
+            1．训练要点：<br><br>
+            	简单过滤器的使用；<br>
+            	内容过滤器的使用；<br>
+            	如何获取指定元素的值？<br>
+            	如何设置元素的样式？<br><br>
+            2．需求说明<br><br>
+            制作显示如下图所示的页面，要求如下。<br><br>
+            (1)	当页面加载完毕时，隔行变色，颜色值如上图图所示，其中标题行字体颜色为白色，首行背景颜色值为：#00a40c，偶数行颜色值为#a5e5aa。。<br>
+            (2)	当鼠标指向某一行时，该行颜色随之改变，当离开那行时，该行颜色恢复原样。<br>
+            (3)	输入相应的查找内容，点击“确定”按钮，内容所在单元格字体高亮，清空文本框内容<br>
+                再次点击“确定”按钮，查找到的单元格字体颜色恢复。<br>
+        </div>
+    </fieldset>
+
+
+
+    <!-- 完成结果  -->
+
+    <fieldset class="layui-elem-field">
+        <legend>完成结果</legend>
+        <div class="layui-field-box">
+
+            <h1>学生信息表</h1>
+
+            <div>
+                姓名：<textarea id="sufname"></textarea>
+                <button id="sufbtn">确定</button>
+            </div>
+
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="datalist">
+                <tr class="line0">
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>电话号码</td>
+                </tr>
+                <tr class="line">
+                    <td>20141201</td>
+                    <td class="name">陈奕炫</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424456</td>
+                </tr>
+                <tr class="line">
+                    <td>20141202</td>
+                    <td class="name">李伟涛</td>
+                    <td>男</td>
+                    <td>19</td>
+                    <td>13882424457</td>
+                </tr>
+                <tr class="line">
+                    <td>20141203</td>
+                    <td class="name">卢志宏</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424461</td>
+                </tr>
+                <tr class="line">
+                    <td>20141204</td>
+                    <td class="name">马晓松</td>
+                    <td>男</td>
+                    <td>17</td>
+                    <td>13882424458</td>
+                </tr>
+                <tr class="line">
+                    <td>20141205</td>
+                    <td class="name">朱俊亮</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424459</td>
+                </tr>
+                <tr class="line">
+                    <td>20141206</td>
+                    <td class="name">范汉华</td>
+                    <td>男</td>
+                    <td>19</td>
+                    <td>13882424460</td>
+                </tr>
+                <tr class="line">
+                    <td>20141207</td>
+                    <td class="name">陈荣辉</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424461</td>
+                </tr>
+                <tr class="line">
+                    <td>20141208</td>
+                    <td class="name">吴家良</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424462</td>
+                </tr>
+                <tr class="line">
+                    <td>20141209</td>
+                    <td class="name">张安享</td>
+                    <td>男</td>
+                    <td>19</td>
+                    <td>13882424463</td>
+                </tr>
+                <tr class="line">
+                    <td>20141210</td>
+                    <td class="name">吴耀东</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424464</td>
+                </tr>
+                <tr class="line">
+                    <td>20141211</td>
+                    <td class="name">黄小桂</td>
+                    <td>女</td>
+                    <td>18</td>
+                    <td>13882424465</td>
+                </tr>
+                <tr class="line">
+                    <td>20141212</td>
+                    <td class="name">陈永亮</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424466</td>
+                </tr>
+                <tr class="line">
+                    <td>20141213</td>
+                    <td class="name">黄博</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424467</td>
+                </tr>
+                <tr class="line">
+                    <td>20141214</td>
+                    <td class="name">张晓佳</td>
+                    <td>女</td>
+                    <td>18</td>
+                    <td>13882424468</td>
+                </tr>
+                <tr class="line">
+                    <td>20141215</td>
+                    <td class="name">林德佳</td>
+                    <td>男</td>
+                    <td>18</td>
+                    <td>13882424469</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </fieldset>
+
+    <!-- 实现代码  -->
+        <fieldset class="layui-elem-field">
+        <legend>实现代码</legend>
+        <div class="layui-field-box">
+        <pre class="layui-code">
+
+$(function () {
+    $("tr:first").addClass("tableHeader");
+    $("tr:even:not(:first)").addClass("evenStyle");
+    $("tr:not(:first)").mouseover(function () {
+        $(this).addClass("over");
+    });
+    $("tr:not(:first)").mouseout(function () {
+        $(this).removeClass("over");
+    })
+
+    $("#sufbtn").click(function () {
+        var name = document.getElementById("sufname").value;
+        var names = document.getElementsByClassName("name");
+        var lines = document.getElementsByClassName("line");
+        for (var i = 0; i < names.length; i++) {
+            //alert(names[i].innerHTML);
+            $(lines[i]).removeClass("over");
+            if (names[i].innerHTML === name) {
+                $(lines[i]).addClass("over");
+                document.getElementById("sufbtn").disabled;
+            }
+        }
+    });
+
+})
+
+        </pre>
+        </div>
+    </fieldset>
+
+
+    <script src="../src/layui.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use('code', function(){
+            layui.code({
+                title : '双色表格',
+                about : false
+            });
+
+        });
+    </script>
+
+</body>
+</html>
